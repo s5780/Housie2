@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: housie
+    runtime: docker
+    plan: starter
+    healthCheckPath: /
+    disk: { name: housie-data, mountPath: /data, sizeGB: 1 }
+    envVars:
+      - { key: NODE_ENV, value: production }
+      - { key: DB_PATH, value: /data/housie.db }
+      - { key: JWT_SECRET, generateValue: true }
+      - { key: BASE_URL, sync: false }
+      - { key: META_VERIFY_TOKEN, sync: false }
+      - { key: META_APP_ID, sync: false }
+      - { key: COMPANY_NAME, sync: false }
+      - { key: CONTACT_EMAIL, sync: false }
+      - { key: META_APP_SECRET, sync: false }
+      - { key: ANTHROPIC_API_KEY, sync: false }
+      - { key: RAZORPAY_KEY_ID, sync: false }
+      - { key: RAZORPAY_KEY_SECRET, sync: false }
+      - { key: RAZORPAY_WEBHOOK_SECRET, sync: false }
+      - { key: RZP_PLAN_SOLO, sync: false }
+      - { key: RZP_PLAN_TEAM, sync: false }
